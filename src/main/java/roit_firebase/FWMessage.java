@@ -50,9 +50,9 @@ public class FWMessage {
 		Map<String, Object> docData = new HashMap<>();
 		docData.put("user", user);
 		docData.put("pop_message", message);
-		
+		docData.put("timestamp", String.valueOf(System.currentTimeMillis()));
 		// Add a new document (asynchronously)
-		ApiFuture<WriteResult> future = db.collection("discord_batphone_message").document(String.valueOf(System.currentTimeMillis())).set(docData);
+		ApiFuture<WriteResult> future = db.collection("roit_discord_message").document("currentPoP").set(docData);
 		
 		try {
 			System.out.println("Update time : " + future.get().getUpdateTime() + "result: " + future.isDone());
@@ -70,7 +70,7 @@ public class FWMessage {
 		// TODO Auto-generated method stub
 		FWMessage message = new FWMessage();
 		message.initFireBase();
-		message.sendMessage("Koalala", "Zlandicar pop!");
+		message.sendMessage("Koalala", "testMessage");
 	}
 
 }
